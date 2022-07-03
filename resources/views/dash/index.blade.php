@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+
 
 @section('content_header')
     <h1>Dashboard</h1>
@@ -11,9 +11,17 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Styles -->
+    @livewireStyles
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 @stop
 
 @section('js')
-    <script> console.log('Hi123!'); </script>
+    <script>
+        console.log('Hi123!');
+    </script>
 @stop

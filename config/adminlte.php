@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'CMDB',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>CMDB💩</b> 3.0',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -239,7 +239,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
         ],
         [
             'text' => 'blog',
@@ -256,14 +256,32 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
+        /* [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+        ], */
+        //------------------------- ADMINISTRACIÓN MENÚ --------
+        [
+            'text'    => 'Adminsitración',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Edificios',
+                    'icon' => 'fas fa-solid fa-building',
+                    'url'  => 'edificios',
+                ],
+                [
+                    'text' => 'Pisos',
+                    'icon' => 'fas fa-solid fa-building',
+                    'url'  => '#',
+                ],
+            ],
         ],
+
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',

@@ -26,3 +26,12 @@ Route::middleware([
         return view('dash.index');
     })->name('dash');
 });
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+
+Route::get('/edificios', function () { return view('forms.create');});
