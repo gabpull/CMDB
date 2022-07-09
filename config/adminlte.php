@@ -148,12 +148,12 @@ return [
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
-    'sidebar_scrollbar_auto_hide' => 'l',
-    'sidebar_nav_accordion' => true,
-    'sidebar_nav_animation_speed' => 300,
+    'sidebar_scrollbar_auto_hide' => 'n',
+    'sidebar_nav_accordion' => false,
+    'sidebar_nav_animation_speed' => 50,
 
     /*
     |--------------------------------------------------------------------------
@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -272,7 +272,7 @@ return [
                 [
                     'text' => 'Edificios',
                     'icon' => 'fas fa-solid fa-building',
-                    'url'  => 'edificios',
+                    'url'  => '/edificios',
                 ],
                 [
                     'text' => 'Pisos',

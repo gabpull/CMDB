@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('tb_edificios', function (Blueprint $table) {
             $table->id();
             $table->string('desc_edificio');
+            $table->string('usuario_creacion');
+            $table->string('usuario_modificacion');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

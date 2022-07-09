@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('desc_piso');
             $table->foreignId('id_edificio')->references('id')->on('tb_edificios');
+            $table->string('usuario_creacion');
+            $table->string('usuario_modificacion');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

@@ -15,7 +15,8 @@ class TbEdificioController extends Controller
      */
     public function index()
     {
-        //
+        /* $edificios = tb_edificio::all();
+        return view('forms.index', compact('edificios')); */
     }
 
     /**
@@ -25,7 +26,9 @@ class TbEdificioController extends Controller
      */
     public function create()
     {
-        //
+        $edificios = new tb_edificio();
+        return view('forms.create');
+        //return 'Hola';
     }
 
     /**
@@ -36,7 +39,18 @@ class TbEdificioController extends Controller
      */
     public function store(Storetb_edificioRequest $request)
     {
-        //
+        //tb_edificio::create($request->all());
+
+        tb_edificio::create([
+            'desc_edificio' => $request->input('desc_edificio'),
+            'activo' => $request->input('activo'),
+            'usuario_creacion' => $request->input('usuario_creacion'),
+            'usuario_modificacion' => $request->input('usuario_modificacion'),
+        ]);
+
+        
+
+        return redirect('/edificios');
     }
 
     /**
@@ -47,7 +61,8 @@ class TbEdificioController extends Controller
      */
     public function show(tb_edificio $tb_edificio)
     {
-        //
+        $edificios = tb_edificio::all();
+        return view('forms.index', compact('edificios'));
     }
 
     /**
