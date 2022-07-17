@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_edificios', function (Blueprint $table) {
+        Schema::create('tb_modelos', function (Blueprint $table) {
             $table->id();
-            $table->string('desc_edificio')->unique();
+            $table->string('desc_modelo')->unique();
             $table->string('usuario_creacion');
             $table->string('usuario_modificacion');
-            $table->boolean('activo')->default(true);
+            $table->foreignId('id_marca')->references('id')->on('tb_marcas');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_edificios');
+        Schema::dropIfExists('tb_modelos');
     }
 };

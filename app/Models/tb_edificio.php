@@ -15,4 +15,11 @@ class tb_edificio extends Model
         'usuario_creacion',
         'usuario_modificacion',
     ];
+
+
+    public function pisos(){
+        return $this->hasMany(tb_piso::class, 'id_edificio'); // tb_pisos.id_edificio   (post_id)
+    }
 }
+
+

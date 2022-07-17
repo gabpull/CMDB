@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edidicios')
+@section('title', 'Crear Edificios')
 
 @section('content')
     <div class="container-md p-5 my-5 border">
@@ -13,6 +13,10 @@
             <div class="mb-3">
                 <label class="form-label">Edificio</label>
                 <input type="text" name="desc_edificio" class="form-control form-control-sm" placeholder="Nombre Edificio">
+                @error('desc_edificio')
+                    <br>
+                    <div class="alert alert-danger" role="alert">{{ $message  }}</div>
+                @enderror
                 <input type="text" name="usuario_creacion" class="form-control form-control-sm" value="{{  Auth::user()->name }}" hidden>
                 <input type="text" name="usuario_modificacion" class="form-control form-control-sm" value="{{  Auth::user()->name }}" hidden>
             </div>

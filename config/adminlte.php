@@ -272,12 +272,12 @@ return [
                 [
                     'text' => 'Edificios',
                     'icon' => 'fas fa-solid fa-building',
-                    'url'  => '/edificios',
+                    'url'  => 'edificios',
                 ],
                 [
                     'text' => 'Pisos',
                     'icon' => 'fas fa-solid fa-building',
-                    'url'  => '#',
+                    'url'  => '/pisos',
                 ],
             ],
         ],

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\TbEdificioController;
-use App\Policies\TbEdificioPolicy;
+use App\Http\Controllers\TbPisoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +27,6 @@ Route::middleware([
     Route::get('/', function () {
         return view('dash.index');
     })->name('dash');
-
 });
 
 
@@ -40,15 +39,46 @@ Route::get('/dashboard', function () {
     })->name('crear'); */
 
 
-Route::controller(TbEdificioController::class)->group(function () {
+/* Route::controller(TbEdificioController::class)->group(function () {
 
     Route::middleware('auth')->group(function () {
+        Route::get('/pisos', 'show');
         Route::get('/edificios', 'show');
         Route::get('/edificios/crear', 'create');
         Route::post('/edificios/creado', 'store');
-
+        Route::get('/edificios/{edificio}/editar', 'edit');
+        Route::patch('/edificios/{edificio}', 'update');
+        Route::delete('/edificios/{edificio}', 'destroy');
     });
 });
+ */
+
+Route::middleware('auth')->group(function () {
+    Route::controller(TbPisoController::class)->group(function () {
+        Route::get('/pisos', 'show');
+        Route::get('/pisos/crear', 'create');
+        Route::post('/pisos/creado', 'store');
+        Route::get('/pisos/{piso}/editar', 'edit');
+        Route::patch('/pisos/{piso}', 'update');
+        Route::delete('/pisos/{piso}', 'destroy');
+    });
+    Route::controller(TbEdificioController::class)->group(function () {
+        Route::get('/edificios', 'show');
+        //Route::get('/edificios/{edificio}', 'show');
+        Route::get('/edificios/crear', 'create');
+        Route::post('/edificios/creado', 'store');
+        Route::get('/edificios/{edificio}/editar', 'edit');
+        Route::patch('/edificios/{edificio}', 'update');
+        Route::delete('/edificios/{edificio}', 'destroy');
+    });
+
+});
+
+
+
+
+
+
 
 
 

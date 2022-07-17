@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\tb_edificio;
 use App\Http\Requests\Storetb_edificioRequest;
-use App\Http\Requests\Updatetb_edificioRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TbEdificioController extends Controller
 {
@@ -27,7 +28,7 @@ class TbEdificioController extends Controller
     public function create()
     {
         $edificios = new tb_edificio();
-        return view('forms.create');
+        return view('forms.edificios.create');
         //return 'Hola';
     }
 
@@ -39,7 +40,9 @@ class TbEdificioController extends Controller
      */
     public function store(Storetb_edificioRequest $request)
     {
-        //tb_edificio::create($request->all());
+        $request->validate([
+            'desc_edificio' => 'required|unique:tb_edificios|max:250',
+        ]);
 
         tb_edificio::create([
             'desc_edificio' => $request->input('desc_edificio'),
@@ -50,7 +53,7 @@ class TbEdificioController extends Controller
 
         
 
-        return redirect('/edificios');
+        return redirect('edificios');
     }
 
     /**
@@ -62,7 +65,9 @@ class TbEdificioController extends Controller
     public function show(tb_edificio $tb_edificio)
     {
         $edificios = tb_edificio::all();
-        return view('forms.index', compact('edificios'));
+        //$pisos = $tb_edificio->pisos;
+        //dd($edificios);
+        return view('forms.edificios.index', compact('edificios'));
     }
 
     /**
@@ -71,9 +76,12 @@ class TbEdificioController extends Controller
      * @param  \App\Models\tb_edificio  $tb_edificio
      * @return \Illuminate\Http\Response
      */
-    public function edit(tb_edificio $tb_edificio)
+    public function edit(tb_edificio $edificio)
     {
-        //
+        //dd($edificio);
+        return view('forms.edificios.edit')->with([
+            'edificio' => $edificio,
+        ]);
     }
 
     /**
@@ -83,9 +91,17 @@ class TbEdificioController extends Controller
      * @param  \App\Models\tb_edificio  $tb_edificio
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatetb_edificioRequest $request, tb_edificio $tb_edificio)
+    public function update(Request $request, tb_edificio $edificio)
     {
-        //
+        $request->validate([
+            'desc_edificio' => 'required|max:250',
+        ]);
+        $edificio->update([
+            'desc_edificio' => $request->input('desc_edificio'),
+            'activo' => $request->input('activo'),
+            'usuario_modificacion' => $request->input('usuario_modificacion'),
+        ]);
+        return redirect('/edificios');
     }
 
     /**
@@ -94,8 +110,9 @@ class TbEdificioController extends Controller
      * @param  \App\Models\tb_edificio  $tb_edificio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tb_edificio $tb_edificio)
+    public function destroy(tb_edificio $edificio)
     {
-        //
+        $edificio->delete();
+        return redirect('/edificios');
     }
 }

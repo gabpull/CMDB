@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\tb_piso;
 use App\Http\Requests\Storetb_pisoRequest;
 use App\Http\Requests\Updatetb_pisoRequest;
+use App\Models\tb_edificio;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class TbPisoController extends Controller
 {
@@ -15,7 +19,7 @@ class TbPisoController extends Controller
      */
     public function index()
     {
-        //
+        $piso = tb_piso::all();
     }
 
     /**
@@ -25,7 +29,11 @@ class TbPisoController extends Controller
      */
     public function create()
     {
-        //
+        $piso = new tb_piso();
+
+        //dd($piso);
+        $edificios = tb_edificio::all();
+        return view('forms.pisos.create', compact('piso', 'edificios'));
     }
 
     /**
@@ -36,7 +44,25 @@ class TbPisoController extends Controller
      */
     public function store(Storetb_pisoRequest $request)
     {
-        //
+        //dd();
+        $request->validate([
+            'desc_piso' => 'required|max:250|unique:tb_pisos,desc_piso,'.$request->desc_piso.',id,id_edificio,'.$request->id_edificio,
+        ]);
+
+        
+
+
+        tb_piso::create([
+            'desc_piso' => $request->input('desc_piso'),
+            'id_edificio' => $request->input('id_edificio'),
+            'activo' => $request->input('activo'),
+            'usuario_creacion' => $request->input('usuario_creacion'),
+            'usuario_modificacion' => $request->input('usuario_modificacion'),
+        ]);
+
+        
+
+        return redirect('pisos');
     }
 
     /**
@@ -47,7 +73,13 @@ class TbPisoController extends Controller
      */
     public function show(tb_piso $tb_piso)
     {
-        //
+        //dd($tb_piso);
+        $pisos = tb_piso::all();
+        $edificios = tb_edificio::all();
+        //dd($edificios);
+        return view('forms.pisos.index', compact('pisos'))->with([
+            'edificios' => $edificios,
+        ]);
     }
 
     /**
@@ -56,9 +88,21 @@ class TbPisoController extends Controller
      * @param  \App\Models\tb_piso  $tb_piso
      * @return \Illuminate\Http\Response
      */
-    public function edit(tb_piso $tb_piso)
+    public function edit(tb_piso $piso)
     {
-        //
+        $pis = new tb_piso();
+
+        //dd($piso);
+        $edificios = tb_edificio::all();
+        //dd($piso);
+
+        $piru = $piso->pisos;
+        //dd(123,$piru);
+
+        return view('forms.pisos.edit', compact('edificios'))->with([
+            'piso' => $piso,
+        ]);
+
     }
 
     /**
@@ -68,9 +112,18 @@ class TbPisoController extends Controller
      * @param  \App\Models\tb_piso  $tb_piso
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatetb_pisoRequest $request, tb_piso $tb_piso)
+    public function update(Request $request, tb_piso $piso)
     {
-        //
+        $request->validate([
+            'desc_piso' => 'required|max:250',
+        ]);
+        $piso->update([
+            'desc_piso' => $request->input('desc_piso'),
+            'activo' => $request->input('activo'),
+            'id_edi' => $request->input('id_edificio'),
+            'usuario_modificacion' => $request->input('usuario_modificacion'),
+        ]);
+        return redirect('/pisos');
     }
 
     /**
@@ -79,8 +132,9 @@ class TbPisoController extends Controller
      * @param  \App\Models\tb_piso  $tb_piso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tb_piso $tb_piso)
+    public function destroy(tb_piso $piso)
     {
-        //
+        $piso->delete();
+        return redirect('/pisos');
     }
 }

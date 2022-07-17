@@ -13,7 +13,7 @@ class Storetb_pisoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
