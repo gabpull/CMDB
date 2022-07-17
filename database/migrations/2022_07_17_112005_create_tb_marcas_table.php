@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('tb_marcas', function (Blueprint $table) {
             $table->id();
+            $table->string('desc_marca')->unique();
+            $table->string('usuario_creacion');
+            $table->string('usuario_modificacion');
             $table->timestamps();
         });
     }

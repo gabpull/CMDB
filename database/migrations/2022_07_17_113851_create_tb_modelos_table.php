@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tb_modelos', function (Blueprint $table) {
             $table->id();
-            $table->string('desc_modelo')->unique();
+            $table->string('desc_modelo');
             $table->string('usuario_creacion');
             $table->string('usuario_modificacion');
             $table->foreignId('id_marca')->references('id')->on('tb_marcas');
