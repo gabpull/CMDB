@@ -28,8 +28,8 @@
                 <tr>
                     <td class="align-middle"> {{ $modelo->desc_modelo }} </td>
                     <td class="align-middle"> {{ $modelo->marca->desc_marca  }} </td>
-                    <td class="align-middle"> {{ $modelo->usuario_modificacion }} </td>
-                    <td class="align-middle"> {{ $modelo->usuario_creacion }} </td>
+                    <td class="align-middle"> {{ $modelo->id_usuario_modificacion }} </td>
+                    <td class="align-middle"> {{ $modelo->id_usuario_creacion }} </td>
                     <td class="align-middle text-wrap">{{ $modelo->created_at }}</td>
                     <td class="align-middle">{{ $modelo->updated_at }}</td>
                     <td class="align-middle">

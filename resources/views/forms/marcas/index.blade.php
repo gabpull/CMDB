@@ -26,8 +26,8 @@
             @foreach ($marcas as $marca)
                 <tr>
                     <td class="align-middle"> {{ $marca->desc_marca }} </td>
-                    <td class="align-middle"> {{ $marca->usuario_modificacion }} </td>
-                    <td class="align-middle"> {{ $marca->usuario_creacion }} </td>
+                    <td class="align-middle"> {{ $marca->id_usuario_modificacion }} </td>
+                    <td class="align-middle"> {{ $marca->id_usuario_creacion }} </td>
                     <td class="align-middle text-wrap">{{ $marca->created_at }}</td>
                     <td class="align-middle">{{ $marca->updated_at }}</td>
                     <td class="align-middle">

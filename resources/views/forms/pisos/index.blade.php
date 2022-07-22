@@ -36,9 +36,9 @@
                                 {{ 'Inactivo' }}
                             @endif
                         </span> </td>
-                    <td class="align-middle"> {{ $piso->edificio->desc_edificio}} </td>
-                    <td class="align-middle"> {{ $piso->usuario_modificacion }} </td>
-                    <td class="align-middle"> {{ $piso->usuario_creacion }} </td>
+                    <td class="align-middle"> {{ $piso->edificio->desc_edificio }} </td>
+                    <td class="align-middle"> {{ $piso->id_usuario_modificacion }} </td>
+                    <td class="align-middle"> {{ $piso->id_usuario_creacion }} </td>
                     <td class="align-middle text-wrap">{{ $piso->created_at }}</td>
                     <td class="align-middle">{{ $piso->updated_at }}</td>
                     <td class="align-middle">

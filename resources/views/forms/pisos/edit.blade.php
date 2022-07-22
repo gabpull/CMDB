@@ -17,7 +17,7 @@
                 @error('desc_piso')
                     <br><div class="alert alert-danger" role="alert">{{ $message  }}</div>
                 @enderror
-                <input type="text" name="usuario_modificacion" class="form-control form-control-sm" value="{{  Auth::user()->name }}" hidden>
+                <input type="text" name="usuario_modificacion" class="form-control form-control-sm" value="{{  Auth::user()->id }}" hidden>
                 <br>
                 <select class="form-select" name="id_edificio" id="">
                     

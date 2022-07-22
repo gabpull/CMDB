@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\tb_edificio;
 use App\Http\Requests\Storetb_edificioRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class TbEdificioController extends Controller
@@ -65,9 +67,14 @@ class TbEdificioController extends Controller
     public function show(tb_edificio $tb_edificio)
     {
         $edificios = tb_edificio::all();
+        $users = User::all();
+
+        //dd($users);
         //$pisos = $tb_edificio->pisos;
         //dd($edificios);
-        return view('forms.edificios.index', compact('edificios'));
+        return view('forms.edificios.index', compact('edificios'))->with([
+            'users' => $users,
+        ]);
     }
 
     /**

@@ -70,6 +70,7 @@ class TbPisoController extends Controller
     {
         $pisos = tb_piso::all();
         $edificios = tb_edificio::all();
+        //dd($edificios);
         return view('forms.pisos.index', compact('pisos'))->with([
             'edificios' => $edificios,
         ]);

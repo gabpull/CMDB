@@ -35,8 +35,8 @@
                                 {{ 'Inactivo' }}
                             @endif
                         </span> </td>
-                    <td class="align-middle"> {{ $edificio->usuario_modificacion }} </td>
-                    <td class="align-middle"> {{ $edificio->usuario_creacion }} </td>
+                    <td class="align-middle"> {{ $edificio->id_usuario_creacion  }} </td>
+                    <td class="align-middle"> {{ $edificio->id_usuario_modificacion  }} </td>
                     <td class="align-middle text-wrap">{{ $edificio->created_at }}</td>
                     <td class="align-middle">{{ $edificio->updated_at }}</td>
                     <td class="align-middle">

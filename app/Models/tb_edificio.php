@@ -20,6 +20,10 @@ class tb_edificio extends Model
     public function pisos(){
         return $this->hasMany(tb_piso::class, 'id_edificio'); // tb_pisos.id_edificio   (post_id)
     }
+
+    public function users(){
+        return $this->hasMany(user::class, 'id'); // tb_pisos.id_edificio   (post_id)
+    }
 }
 
 

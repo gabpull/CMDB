@@ -17,8 +17,8 @@
                     <br>
                     <div class="alert alert-danger" role="alert">{{ $message  }}</div>
                 @enderror
-                <input type="text" name="usuario_creacion" class="form-control form-control-sm" value="{{  Auth::user()->name }}" hidden>
-                <input type="text" name="usuario_modificacion" class="form-control form-control-sm" value="{{  Auth::user()->name }}" hidden>
+                <input type="text" name="usuario_creacion" class="form-control form-control-sm" value="{{  Auth::user()->id }}" hidden>
+                <input type="text" name="usuario_modificacion" class="form-control form-control-sm" value="{{  Auth::user()->id }}" hidden>
             </div>
 {{--             <div class="mb-3 form-check">
                 <input type="hidden" name="activo" class="form-check-input" value="0" checked>

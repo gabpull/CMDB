@@ -18,27 +18,27 @@ class TbEdificioSeeder extends Seeder
         $data = [
             [
                 'desc_edificio' => 'Oficinas Centrales',
-                'usuario_creacion' => 'Gabriel Alvarado Murillo',
-                'usuario_modificacion' => 'Gabriel Alvarado Murillo',
                 'activo' => '1',
+                'id_usuario_creacion' => '1',
+                'id_usuario_modificacion' => '1',
             ],
             [
                 'desc_edificio' => 'Sede Desamparados',
-                'usuario_creacion' => 'Gabriel Alvarado Murillo',
-                'usuario_modificacion' => 'Gabriel Alvarado Murillo',
                 'activo' => '1',
+                'id_usuario_creacion' => '1',
+                'id_usuario_modificacion' => '1',
             ],
             [
                 'desc_edificio' => 'Sede Cartago',
-                'usuario_creacion' => 'Gabriel Alvarado Murillo',
-                'usuario_modificacion' => 'Gabriel Alvarado Murillo',
                 'activo' => '1',
+                'id_usuario_creacion' => '1',
+                'id_usuario_modificacion' => '1',
             ],
             [
                 'desc_edificio' => 'Sede Turrialba',
-                'usuario_creacion' => 'Gabriel Alvarado Murillo',
-                'usuario_modificacion' => 'Gabriel Alvarado Murillo',
                 'activo' => '1',
+                'id_usuario_creacion' => '1',
+                'id_usuario_modificacion' => '1',
             ],
 
         ];
