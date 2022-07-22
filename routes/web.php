@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TbEdificioController;
+use App\Http\Controllers\TbMarcaController;
+use App\Http\Controllers\TbModeloController;
 use App\Http\Controllers\TbPisoController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,12 +66,27 @@ Route::middleware('auth')->group(function () {
     });
     Route::controller(TbEdificioController::class)->group(function () {
         Route::get('/edificios', 'show');
-        //Route::get('/edificios/{edificio}', 'show');
         Route::get('/edificios/crear', 'create');
         Route::post('/edificios/creado', 'store');
         Route::get('/edificios/{edificio}/editar', 'edit');
         Route::patch('/edificios/{edificio}', 'update');
         Route::delete('/edificios/{edificio}', 'destroy');
+    });
+    Route::controller(TbMarcaController::class)->group(function () {
+        Route::get('/marcas', 'show'); //listo
+        Route::get('/marcas/crear', 'create');//listo
+        Route::post('/marcas/creado', 'store');//listo
+        Route::get('/marcas/{marca}/editar', 'edit');//listo
+        Route::patch('/marcas/{marca}', 'update');//listo
+        Route::delete('/marcas/{marca}', 'destroy');
+    });
+    Route::controller(TbModeloController::class)->group(function () {
+        Route::get('/modelos', 'show');
+        Route::get('/modelos/crear', 'create');
+        Route::post('/modelos/creado', 'store');
+        Route::get('/modelos/{modelo}/editar', 'edit');
+        Route::patch('/modelos/{modelo}', 'update');
+        Route::delete('/modelos/{modelo}', 'destroy');
     });
 
 });

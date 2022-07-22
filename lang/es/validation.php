@@ -150,6 +150,9 @@ return [
         'desc_piso' => 'Piso',
         'id_edificio' => 'Edificio',
         'desc_edificio' => 'Edificio',
+        'desc_modelo' => 'Modelo',
+        'id_marca' => 'Marca',
+        'desc_marca' => 'Marca',
     ],
 
 ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tb_marca;
 use App\Http\Requests\Storetb_marcaRequest;
 use App\Http\Requests\Updatetb_marcaRequest;
+use Illuminate\Http\Request;
 
 class TbMarcaController extends Controller
 {
@@ -25,7 +26,8 @@ class TbMarcaController extends Controller
      */
     public function create()
     {
-        //
+        $marcas = new tb_marca();
+        return view('forms.marcas.create');
     }
 
     /**
@@ -36,7 +38,19 @@ class TbMarcaController extends Controller
      */
     public function store(Storetb_marcaRequest $request)
     {
-        //
+        $request->validate([
+            'desc_marca' => 'required|unique:tb_marcas|max:250',
+        ]);
+
+        tb_marca::create([
+            'desc_marca' => $request->input('desc_marca'),
+            'usuario_creacion' => $request->input('usuario_creacion'),
+            'usuario_modificacion' => $request->input('usuario_modificacion'),
+        ]);
+
+        
+
+        return redirect('marcas');
     }
 
     /**
@@ -47,7 +61,9 @@ class TbMarcaController extends Controller
      */
     public function show(tb_marca $tb_marca)
     {
-        //
+        $marcas = tb_marca::all();
+
+        return view('forms.marcas.index', compact('marcas'));
     }
 
     /**
@@ -56,9 +72,11 @@ class TbMarcaController extends Controller
      * @param  \App\Models\tb_marca  $tb_marca
      * @return \Illuminate\Http\Response
      */
-    public function edit(tb_marca $tb_marca)
+    public function edit(tb_marca $marca)
     {
-        //
+        return view('forms.marcas.edit')->with([
+            'marca' => $marca,
+        ]);
     }
 
     /**
@@ -68,9 +86,16 @@ class TbMarcaController extends Controller
      * @param  \App\Models\tb_marca  $tb_marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatetb_marcaRequest $request, tb_marca $tb_marca)
+    public function update(Request $request, tb_marca $marca)
     {
-        //
+        $request->validate([
+            'desc_marca' => 'required|max:250',
+        ]);
+        $marca->update([
+            'desc_marca' => $request->input('desc_marca'),
+            'usuario_modificacion' => $request->input('usuario_modificacion'),
+        ]);
+        return redirect('/marcas');
     }
 
     /**
@@ -79,8 +104,9 @@ class TbMarcaController extends Controller
      * @param  \App\Models\tb_marca  $tb_marca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tb_marca $tb_marca)
+    public function destroy(tb_marca $marca)
     {
-        //
+        $marca->delete();
+        return redirect('/marcas');
     }
 }

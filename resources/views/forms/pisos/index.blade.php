@@ -21,7 +21,7 @@
                 <th>Creación</th>
                 <th>Fecha Creación</th>
                 <th>Fecha Ultima Edición</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>

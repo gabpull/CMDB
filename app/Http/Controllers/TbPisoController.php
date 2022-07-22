@@ -44,13 +44,10 @@ class TbPisoController extends Controller
      */
     public function store(Storetb_pisoRequest $request)
     {
-        //dd();
         $request->validate([
             'desc_piso' => 'required|max:250|unique:tb_pisos,desc_piso,'.$request->desc_piso.',id,id_edificio,'.$request->id_edificio,
+            'id_edificio' => 'required',
         ]);
-
-        
-
 
         tb_piso::create([
             'desc_piso' => $request->input('desc_piso'),
@@ -59,8 +56,6 @@ class TbPisoController extends Controller
             'usuario_creacion' => $request->input('usuario_creacion'),
             'usuario_modificacion' => $request->input('usuario_modificacion'),
         ]);
-
-        
 
         return redirect('pisos');
     }
@@ -73,10 +68,8 @@ class TbPisoController extends Controller
      */
     public function show(tb_piso $tb_piso)
     {
-        //dd($tb_piso);
         $pisos = tb_piso::all();
         $edificios = tb_edificio::all();
-        //dd($edificios);
         return view('forms.pisos.index', compact('pisos'))->with([
             'edificios' => $edificios,
         ]);

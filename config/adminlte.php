@@ -279,6 +279,16 @@ return [
                     'icon' => 'fas fa-solid fa-building',
                     'url'  => '/pisos',
                 ],
+                [
+                    'text' => 'Marcas',
+                    'icon' => 'fas fa-solid fa-building',
+                    'url'  => '/marcas',
+                ],
+                [
+                    'text' => 'Modelos',
+                    'icon' => 'fas fa-solid fa-building',
+                    'url'  => '/modelos',
+                ],
             ],
         ],
 
